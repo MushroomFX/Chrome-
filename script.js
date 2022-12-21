@@ -84,12 +84,15 @@ for(i=0;i<document.getElementsByClassName('genPW').length;i++){
 
 
 function clip(elem) {
-  // Get the text field
   var copyText = elem
-
-  // Select the text field
   copyText.select();
   copyText.setSelectionRange(0, 99999); // For mobile devices
   navigator.clipboard.writeText(copyText.value);
   console.log("Copied the text: " + copyText.value);
+  document.getElementById('popUp').style.top = 0;
+  // document.getElementById('popUpBar').style.width = '0%';
+  var popUptimeout = setTimeout(function(){
+    document.getElementById('popUp').style.top = '-100%';
+    // document.getElementById('popUpBar').style.width = '100%';
+  },2500)
 }
