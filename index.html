@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SB Stats</title>
+    <meta charset="utf-8">
+</head>
+<body style="height:216px;width:384px;">
+  <div id="tabs">
+      <input type="color" class="tab" id="colorPicker">
+      <div class="tab" id="passwordGenerator">
+        <div class="passwordContainer">
+          <div id="passwordSettings">
+            <a>Length:</a>
+            <input type="number" id="passwordLength" value="12">
+            <a>Use specialcharacters:</a>
+            <input type="checkbox" id="passwordSymbols" checked><br>
+            <a>Use capital letters:</a>
+            <input type="checkbox" id="passwordCaps" checked><br>
+            <a>Use numbers:</a>
+            <input type="checkbox" id="passwordNums" checked><br>
+            <input type="button" id="passwordGen" value="Generate Password">
+          </div>
+          <div id="passwordOutput"></div>
+        </div>
+      </div>
+      <div class="tab" id=""></div>
+  </div>
+<div id="navBar" class="noselect">
+  <div class="navItem" offsetValue="0">Colorpicker</div>
+  <div class="navItem" offsetValue="1">Passwords</div>
+  <div class="navItem" offsetValue="2">-</div>
+  <div id="slectionIdnicator">
+    <div class="selectionBar"></div>
+  </div>
+</div>
+</body>
+<script src="script.js"></script>
+<style>
+body{
+  background:#2A2B2E;
+  color:white;
+  margin:0;
+  overflow:hidden
+}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+#navBar {
+  width:100vw;
+  position:fixed;
+  bottom:0;
+  left:0;
+  text-align:center;
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1.5em .5em; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". . ."
+    ". . ."; 
+}
+#navBar > div.navItem{
+  -webkit-box-shadow: 0px 1em 0px 0px #3C4043; 
+  box-shadow: 0px 1em 0px 0px #3C4043;
+  background: #484A4D;
+  /*font-weight:900;*/
+}
+#navBar > div.navItem:hover{
+  background:#80808080;
+  backdrop-filter: blur(10px);
+}
+#navBar > #slectionIdnicator > .selectionBar{
+background:#8ab4f8;
+width:100%;
+height:100%;
+-webkit-transition: all 0.5s 0s ease;
+-moz-transition: all 0.5s 0s ease;
+-o-transition: all 0.5s 0s ease;
+transition: all 0.5s 0s ease;
+}
+.tab{
+  position:absolute;
+  width:100vw;
+  height: calc(100vh - 1.75em);
+  -webkit-transition: transform 0.5s 0s ease, opacity 0.5s 0s ease;
+-moz-transition: transform 0.5s 0s ease, opacity 0.5s 0s ease;
+-o-transition: transform 0.5s 0s ease, opacity 0.5s 0s ease;
+transition: transform 0.5s 0s ease, opacity 0.5s 0s ease;
+}
+.passwordContainer{
+display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". ."; 
+  }
+  #passwordSettings, #passwordOutput{
+    padding: 1em;
+  }
+  #passwordGen{
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+  }
+  .genPW{
+    width: calc(100% - 2em);
+  }
+</style>
+</html>

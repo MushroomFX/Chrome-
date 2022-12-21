@@ -1,0 +1,14 @@
+{
+    "name": "Chrome+",
+    "version": "1.0.0",
+    "description": "add usefull dev Tools",
+    "manifest_version": 3,
+    "author": "MushroomFX",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Chrome+"
+    },
+    "icons": {
+        "48": "icon.png"
+    }
+}
