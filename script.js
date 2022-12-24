@@ -1,6 +1,12 @@
 switchTab(document.getElementsByClassName('navItem')[1])
 function switchTab(elem){
   var offset = elem.getAttribute('offsetValue')
+
+    var timeout =setTimeout(function(){
+      document.getElementsByClassName('clickOnLoad')[offset].click()
+    },50)
+  
+
   document.getElementsByClassName('selectionBar')[0].style.transform = `translate(${offset}00%,0%)`
   for(i=0;i<document.getElementsByClassName('tab').length;i++){ 
     document.getElementsByClassName('tab')[i].style.opacity = 0
@@ -16,27 +22,27 @@ for(i=0;i<document.getElementsByClassName('navItem').length;i++){
   });
 }
 
-function getSiteStorage(){
-  function listCookies() {
-      var theCookies = document.cookie.split(';');
-      var aString = '';
-      for (var i = 1 ; i <= theCookies.length; i++) {
-          aString += i + ' ' + theCookies[i-1] + "\n";
-      }
-      return aString;
-  }
-  function listStorage() {
-      var values = [],
-          keys = Object.keys(localStorage),
-          i = keys.length;
-      while ( i-- ) {
-          values.push(localStorage.getItem(keys[i]));
-      }
-      return values;
-  }
-return {cookies:listCookies(),localStorage:listStorage()}
-}
-console.log(getSiteStorage())
+// function getSiteStorage(){
+//   function listCookies() {
+//       var theCookies = document.cookie.split(';');
+//       var aString = '';
+//       for (var i = 1 ; i <= theCookies.length; i++) {
+//           aString += i + ' ' + theCookies[i-1] + "\n";
+//       }
+//       return aString;
+//   }
+//   function listStorage() {
+//       var values = [],
+//           keys = Object.keys(localStorage),
+//           i = keys.length;
+//       while ( i-- ) {
+//           values.push(localStorage.getItem(keys[i]));
+//       }
+//       return values;
+//   }
+// return {cookies:listCookies(),localStorage:listStorage()}
+// }
+// console.log(getSiteStorage())
 
 
 
@@ -53,9 +59,16 @@ function genPW(){
 
   var charSet = letters+'ß'
 
-  if(document.getElementById('passwordSymbols').checked){charSet += symboles}
-  if(document.getElementById('passwordCaps').checked){charSet += capital}
-  if(document.getElementById('passwordNums').checked){charSet += numbers}
+  var settings = {
+    passwordSymbols:document.getElementById('passwordSymbols').checked,
+    passwordCaps:document.getElementById('passwordCaps').checked,
+    passwordNums:document.getElementById('passwordNums').checked
+  }
+  console.log(settings)
+
+  if(settings.passwordSymbols){charSet += symboles}
+  if(settings.passwordCaps){charSet += capital}
+  if(settings.passwordNums){charSet += numbers}
 
   const pwLength = document.getElementById('passwordLength').value
   
